@@ -1,8 +1,8 @@
-package com.avinashee0012.crio_video_rental_basic.service;
+package com.avinashee0012.crio_video_rental_advance.service;
 
-import com.avinashee0012.crio_video_rental_basic.dto.MessageResponseDto;
-import com.avinashee0012.crio_video_rental_basic.dto.VideoRequestDto;
-import com.avinashee0012.crio_video_rental_basic.dto.VideoResponseDto;
+import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
+import com.avinashee0012.crio_video_rental_advance.dto.VideoRequestDto;
+import com.avinashee0012.crio_video_rental_advance.dto.VideoResponseDto;
 
 import java.util.List;
 

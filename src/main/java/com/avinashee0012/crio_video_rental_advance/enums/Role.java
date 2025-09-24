@@ -1,4 +1,4 @@
-package com.avinashee0012.crio_video_rental_basic.enums;
+package com.avinashee0012.crio_video_rental_advance.enums;
 
 public enum Role {
     CUSTOMER,

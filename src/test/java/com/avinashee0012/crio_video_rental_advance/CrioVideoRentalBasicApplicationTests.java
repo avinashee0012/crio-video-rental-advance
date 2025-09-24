@@ -1,4 +1,4 @@
-package com.avinashee0012.crio_video_rental_basic;
+package com.avinashee0012.crio_video_rental_advance;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

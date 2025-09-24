@@ -1,4 +1,4 @@
-package com.avinashee0012.crio_video_rental_basic.dto;
+package com.avinashee0012.crio_video_rental_advance.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

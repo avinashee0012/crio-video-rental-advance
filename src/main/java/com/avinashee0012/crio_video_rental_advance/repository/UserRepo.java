@@ -1,6 +1,6 @@
-package com.avinashee0012.crio_video_rental_basic.repository;
+package com.avinashee0012.crio_video_rental_advance.repository;
 
-import com.avinashee0012.crio_video_rental_basic.entity.User;
+import com.avinashee0012.crio_video_rental_advance.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

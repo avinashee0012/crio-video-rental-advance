@@ -1,4 +1,4 @@
-package com.avinashee0012.crio_video_rental_basic.entity;
+package com.avinashee0012.crio_video_rental_advance.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,13 +1,13 @@
-package com.avinashee0012.crio_video_rental_basic;
+package com.avinashee0012.crio_video_rental_advance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrioVideoRentalBasicApplication {
+public class CrioVideoRentalAdvanceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrioVideoRentalBasicApplication.class, args);
+		SpringApplication.run(CrioVideoRentalAdvanceApplication.class, args);
 	}
 
 }

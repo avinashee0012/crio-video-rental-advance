@@ -1,6 +1,6 @@
-package com.avinashee0012.crio_video_rental_basic.entity;
+package com.avinashee0012.crio_video_rental_advance.entity;
 
-import com.avinashee0012.crio_video_rental_basic.enums.Role;
+import com.avinashee0012.crio_video_rental_advance.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

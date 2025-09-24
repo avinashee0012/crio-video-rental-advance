@@ -1,6 +1,6 @@
-package com.avinashee0012.crio_video_rental_basic.service;
+package com.avinashee0012.crio_video_rental_advance.service;
 
-import com.avinashee0012.crio_video_rental_basic.repository.UserRepo;
+import com.avinashee0012.crio_video_rental_advance.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

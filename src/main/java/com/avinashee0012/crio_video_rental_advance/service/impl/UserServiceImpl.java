@@ -1,12 +1,12 @@
-package com.avinashee0012.crio_video_rental_basic.service.impl;
+package com.avinashee0012.crio_video_rental_advance.service.impl;
 
-import com.avinashee0012.crio_video_rental_basic.dto.LoginRequestDto;
-import com.avinashee0012.crio_video_rental_basic.dto.RegisterRequestDto;
-import com.avinashee0012.crio_video_rental_basic.dto.MessageResponseDto;
-import com.avinashee0012.crio_video_rental_basic.entity.User;
-import com.avinashee0012.crio_video_rental_basic.enums.Role;
-import com.avinashee0012.crio_video_rental_basic.repository.UserRepo;
-import com.avinashee0012.crio_video_rental_basic.service.UserService;
+import com.avinashee0012.crio_video_rental_advance.dto.LoginRequestDto;
+import com.avinashee0012.crio_video_rental_advance.dto.RegisterRequestDto;
+import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
+import com.avinashee0012.crio_video_rental_advance.entity.User;
+import com.avinashee0012.crio_video_rental_advance.enums.Role;
+import com.avinashee0012.crio_video_rental_advance.repository.UserRepo;
+import com.avinashee0012.crio_video_rental_advance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;

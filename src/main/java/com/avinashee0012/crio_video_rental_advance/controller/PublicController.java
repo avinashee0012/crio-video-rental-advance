@@ -1,9 +1,9 @@
-package com.avinashee0012.crio_video_rental_basic.controller;
+package com.avinashee0012.crio_video_rental_advance.controller;
 
-import com.avinashee0012.crio_video_rental_basic.dto.LoginRequestDto;
-import com.avinashee0012.crio_video_rental_basic.dto.RegisterRequestDto;
-import com.avinashee0012.crio_video_rental_basic.dto.MessageResponseDto;
-import com.avinashee0012.crio_video_rental_basic.service.UserService;
+import com.avinashee0012.crio_video_rental_advance.dto.LoginRequestDto;
+import com.avinashee0012.crio_video_rental_advance.dto.RegisterRequestDto;
+import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
+import com.avinashee0012.crio_video_rental_advance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

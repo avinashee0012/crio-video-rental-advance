@@ -1,12 +1,12 @@
-package com.avinashee0012.crio_video_rental_basic.service.impl;
+package com.avinashee0012.crio_video_rental_advance.service.impl;
 
-import com.avinashee0012.crio_video_rental_basic.dto.MessageResponseDto;
-import com.avinashee0012.crio_video_rental_basic.dto.VideoRequestDto;
-import com.avinashee0012.crio_video_rental_basic.dto.VideoResponseDto;
-import com.avinashee0012.crio_video_rental_basic.entity.Video;
-import com.avinashee0012.crio_video_rental_basic.repository.UserRepo;
-import com.avinashee0012.crio_video_rental_basic.repository.VideoRepo;
-import com.avinashee0012.crio_video_rental_basic.service.VideoService;
+import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
+import com.avinashee0012.crio_video_rental_advance.dto.VideoRequestDto;
+import com.avinashee0012.crio_video_rental_advance.dto.VideoResponseDto;
+import com.avinashee0012.crio_video_rental_advance.entity.Video;
+import com.avinashee0012.crio_video_rental_advance.repository.UserRepo;
+import com.avinashee0012.crio_video_rental_advance.repository.VideoRepo;
+import com.avinashee0012.crio_video_rental_advance.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
