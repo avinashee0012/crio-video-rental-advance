@@ -3,6 +3,7 @@ package com.avinashee0012.crio_video_rental_advance.service;
 import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
 import com.avinashee0012.crio_video_rental_advance.dto.VideoRequestDto;
 import com.avinashee0012.crio_video_rental_advance.dto.VideoResponseDto;
+import com.avinashee0012.crio_video_rental_advance.entity.User;
 
 import java.util.List;
 
@@ -13,5 +14,6 @@ public interface VideoService {
 
     List<VideoResponseDto> getAvailableVideos();
     VideoResponseDto getVideoById(Long id);
-    MessageResponseDto rentVideo();
+    MessageResponseDto rentVideo(Long videoId, User currentUser);
+    MessageResponseDto returnVideo(Long videoId, User currentUser);
 }

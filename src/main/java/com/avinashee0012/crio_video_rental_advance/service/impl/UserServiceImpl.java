@@ -6,8 +6,12 @@ import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
 import com.avinashee0012.crio_video_rental_advance.entity.User;
 import com.avinashee0012.crio_video_rental_advance.enums.Role;
 import com.avinashee0012.crio_video_rental_advance.repository.UserRepo;
+import com.avinashee0012.crio_video_rental_advance.service.JwtService;
 import com.avinashee0012.crio_video_rental_advance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,10 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private JwtService jwtService;
 
     @Override
     public MessageResponseDto register(RegisterRequestDto request) {
@@ -36,14 +44,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public MessageResponseDto login(LoginRequestDto request) {
-        User user = userRepo.findByEmail(request.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new IllegalArgumentException("Invalid password");
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        if (authentication.isAuthenticated()) {
+            return MessageResponseDto.builder()
+                    .message(jwtService.generateToken(request.getEmail()))
+                    .build();
+        } else {
+            throw new UsernameNotFoundException("Invalid user request!");
         }
-        return MessageResponseDto.builder()
-                .message("User logged in successfully")
-                .build();
     }
 
 }

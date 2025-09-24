@@ -3,13 +3,17 @@ package com.avinashee0012.crio_video_rental_advance.service.impl;
 import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
 import com.avinashee0012.crio_video_rental_advance.dto.VideoRequestDto;
 import com.avinashee0012.crio_video_rental_advance.dto.VideoResponseDto;
+import com.avinashee0012.crio_video_rental_advance.entity.Rental;
+import com.avinashee0012.crio_video_rental_advance.entity.User;
 import com.avinashee0012.crio_video_rental_advance.entity.Video;
+import com.avinashee0012.crio_video_rental_advance.repository.RentalRepo;
 import com.avinashee0012.crio_video_rental_advance.repository.UserRepo;
 import com.avinashee0012.crio_video_rental_advance.repository.VideoRepo;
 import com.avinashee0012.crio_video_rental_advance.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +23,8 @@ public class VideoServiceImpl implements VideoService{
     private UserRepo userRepo;
     @Autowired
     private VideoRepo videoRepo;
+    @Autowired
+    private RentalRepo rentalRepo;
 
     @Override
     public MessageResponseDto addVideo(VideoRequestDto request) {
@@ -99,9 +105,62 @@ public class VideoServiceImpl implements VideoService{
     }
 
     @Override
-    public MessageResponseDto rentVideo() {
+    public MessageResponseDto rentVideo(Long videoId, User currentUser) {
+        // Fetch video by ID
+        Video video = videoRepo.findById(videoId).orElse(null);
+        if (video == null) {
+            return MessageResponseDto.builder()
+                    .message("Video not found with ID: " + videoId)
+                    .build();
+        }
+        // Check if video is available and user has less than 3 rentals
+        if (video.isAvailable() && currentUser.getRentals().size() < 2) {
+            // Update video availability to false
+            video.setAvailable(false);
+            // Create a rental record associating the video with the user
+            Rental rental = Rental.builder()
+                    .video(video)
+                    .user(currentUser)
+                    .rentalDate(LocalDate.now())
+                    .build();
+            // save changes
+            videoRepo.save(video);
+            userRepo.save(currentUser);
+            rentalRepo.save(rental);
+            // return success message
+            return MessageResponseDto.builder()
+                    .message("Video '" + video.getTitle() + "' rented successfully.")
+                    .build();
+        }
         return MessageResponseDto.builder()
-                .message("Video rentals coming soon!")
+                .message("Video is currently not available for rent.")
+                .build();
+    }
+
+    @Override
+    public MessageResponseDto returnVideo(Long videoId, User currentUser) {
+        // Fetch video by ID
+        Video video = videoRepo.findById(videoId).orElse(null);
+        if (video == null) {
+            return MessageResponseDto.builder()
+                    .message("Video not found with ID: " + videoId)
+                    .build();
+        }
+        // Remove the rental record associating the video with the user
+        Rental rental = rentalRepo.findByVideoId(videoId).orElse(null);
+        if(rental != null) {
+            rental.setReturned(true);
+            rental.setReturnDate(LocalDate.now());
+            video.setAvailable(true);
+            // save changes
+            videoRepo.save(video);
+            rentalRepo.save(rental);
+            return MessageResponseDto.builder()
+                    .message("Video '" + video.getTitle() + "' returned successfully.")
+                    .build();
+        }
+        return MessageResponseDto.builder()
+                .message("Video " + video.getTitle() + " not rented by user.")
                 .build();
     }
 }

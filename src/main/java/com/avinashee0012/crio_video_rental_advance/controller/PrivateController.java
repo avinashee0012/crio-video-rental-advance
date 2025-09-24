@@ -3,10 +3,12 @@ package com.avinashee0012.crio_video_rental_advance.controller;
 import com.avinashee0012.crio_video_rental_advance.dto.MessageResponseDto;
 import com.avinashee0012.crio_video_rental_advance.dto.VideoRequestDto;
 import com.avinashee0012.crio_video_rental_advance.dto.VideoResponseDto;
+import com.avinashee0012.crio_video_rental_advance.entity.User;
 import com.avinashee0012.crio_video_rental_advance.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,10 +33,16 @@ public class PrivateController {
 
     // ############# CUSTOMER ENDPOINTS #############
 
-    @GetMapping("/videos/{videoId}/rent-video")
+    @GetMapping("/videos/{videoId}/rent")
     @PreAuthorize("hasRole('CUSTOMER')")
-    public ResponseEntity<MessageResponseDto> rentVideo() {
-        return ResponseEntity.ok(videoService.rentVideo());
+    public ResponseEntity<MessageResponseDto> rentVideo(@PathVariable Long videoId, @AuthenticationPrincipal User currentUser) {
+        return ResponseEntity.ok(videoService.rentVideo(videoId, currentUser));
+    }
+
+    @GetMapping("/videos/{videoId}/return")
+    @PreAuthorize("hasRole('CUSTOMER')")
+    public ResponseEntity<MessageResponseDto> returnVideo(@PathVariable Long videoId, @AuthenticationPrincipal User currentUser) {
+        return ResponseEntity.ok(videoService.returnVideo(videoId, currentUser));
     }
 
     // ############# ADMIN ENDPOINTS #############
